@@ -1,9 +1,10 @@
 
+install.packages("ggpubr")
 
 library("vegan")
 require(vegan)
 
-setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis/QPA")
+setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis/PERMANOVA QPA")
 
 
 ######################### 13 C QPA ##############################
@@ -34,7 +35,7 @@ adonis2(NitrogenQPA1~Source*Time, data = FactorsQPA)
 
 ################################################################
 
-setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis/QPB")
+setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis/PERMANOVA QPB")
 
 ######################### 13 C QPA ##############################
 
@@ -68,7 +69,6 @@ IsotopesQPA.frm=read.csv("IsotopesQPA.csv")
 attach(IsotopesQPA.frm)
 IsotopesQPA.frm
 
-install.packages("ggpubr")
 library("ggpubr")
 library(ggplot2)
 ggboxplot(IsotopesQPA.frm, x = "Time", y = "C", color = "Source",width = 0.7,
@@ -83,7 +83,7 @@ IsotopesQPB.frm=read.csv("IsotopesQPB.csv")
 attach(IsotopesQPB.frm)
 IsotopesQPB.frm
 
-install.packages("ggpubr")
+
 library("ggpubr")
 library(ggplot2)
 ggboxplot(IsotopesQPB.frm, x = "Time", y = "C", color = "Source",width = 0.7,
