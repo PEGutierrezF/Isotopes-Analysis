@@ -1,19 +1,24 @@
 
+### Usar solo el comando de community.ML <- communityMetricsML() que esta abajo
+### Ya esta la matrix de QPA esta arreglada con el orden de FFG que hice para SIMMR.  Pero falta QPB.
+### Arreglar los valores que son diferentes
+### estos cambios los hice el 13 de enero del 2020
+
+ 
 install.packages("rjags")
 require("rjags")
 
 library("SIBER")
 
-setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis/Layman's community metrics/SIBERQPB")
+setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis/Layman's community metrics/SIBERQPA")
 
+QPASIBER.frm=read.csv("QPASIBER.csv")
+attach(QPASIBER.frm)
+QPASIBER.frm
 
-QPBSIBER.frm=read.csv("QPBSIBER.csv")
-attach(QPBSIBER.frm)
-QPBSIBER.frm
+QPASIBER <- createSiberObject(QPASIBER.frm)
 
-QPBSIBER <- createSiberObject(QPBSIBER.frm)
-
-plotSiberObject(QPBSIBER,
+plotSiberObject(QPASIBER,
                   ax.pad = 2, 
                   hulls = F, community.hulls.args, 
                   ellipses = T, group.ellipses.args,
@@ -24,10 +29,10 @@ plotSiberObject(QPBSIBER,
                   ylab = expression({delta}^15*N~'\u2030')
                   )
 
-group.ML <- groupMetricsML(QPBSIBER)
+group.ML <- groupMetricsML(QPASIBER)
 print(group.ML)
 
-plotSiberObject(QPBSIBER,
+plotSiberObject(QPASIBER,
                   ax.pad = 2, 
                   hulls = F, community.hulls.args, 
                   ellipses = F, group.ellipses.args,
@@ -39,7 +44,7 @@ plotSiberObject(QPBSIBER,
                   cex = 0.5
                   )
 
-plotSiberObject(QPBSIBER,
+plotSiberObject(QPASIBER,
                   ax.pad = 2, 
                   hulls = T, community.hulls.args, 
                   ellipses = F, group.ellipses.args,
@@ -52,10 +57,10 @@ plotSiberObject(QPBSIBER,
                   )
 
 
-plotGroupEllipses(QPBSIBER, n = 100, p.interval = 0.95,
+plotGroupEllipses(QPASIBER, n = 100, p.interval = 0.95,
                   ci.mean = T, lty = 1, lwd = 2) 
 
-community.ML <- communityMetricsML(QPBSIBER) 
+community.ML <- communityMetricsML(QPASIBER) 
 print(community.ML)
 
 
