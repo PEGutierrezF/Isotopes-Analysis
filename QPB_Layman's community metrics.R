@@ -2,17 +2,24 @@
 install.packages("rjags")
 require("rjags")
 
+#### https://cran.r-project.org/web/packages/SIBER/vignettes/Introduction-to-SIBER.html
+
 library("SIBER")
 
 setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis/Layman's community metrics/SIBERQPB")
 
+QPBSIBER <- read.csv("QPBSIBER.csv", header=T)
+QPBSIBER <- createSiberObject(QPBSIBER)
+QPBSIBER
 
-QPBSIBER.frm=read.csv("QPBSIBER.csv")
-attach(QPBSIBER.frm)
-QPBSIBER.frm
 
-QPBSIBER <- createSiberObject(QPBSIBER.frm)
+##### Groups #####
 
+community.hulls.args <- list(col = 1, lty = 1, lwd = 1)
+group.ellipses.args  <- list(n = 100, p.interval = 0.95, lty = 1, lwd = 2)
+group.hull.args      <- list(lty = 2, col = "grey20")
+
+par(mfrow=c(1,1))
 plotSiberObject(QPBSIBER,
                   ax.pad = 2, 
                   hulls = F, community.hulls.args, 
@@ -23,6 +30,7 @@ plotSiberObject(QPBSIBER,
                   xlab = expression({delta}^13*C~'\u2030'),
                   ylab = expression({delta}^15*N~'\u2030')
                   )
+
 
 group.ML <- groupMetricsML(QPBSIBER)
 print(group.ML)
@@ -55,104 +63,13 @@ plotSiberObject(QPBSIBER,
 plotGroupEllipses(QPBSIBER, n = 100, p.interval = 0.95,
                   ci.mean = T, lty = 1, lwd = 2) 
 
+##########################
+##### For community ######
+##########################
+
+
 community.ML <- communityMetricsML(QPBSIBER) 
 print(community.ML)
-
-
-parms <- list()
-parms$n.iter <- 2 * 10^4   # number of iterations to run the model for
-parms$n.burnin <- 1 * 10^3 # discard the first set of values
-parms$n.thin <- 10     # thin the posterior by this many
-parms$n.chains <- 2        # run this many chains
-
-priors <- list()
-priors$R <- 1 * diag(2)
-priors$k <- 2
-priors$tau.mu <- 1.0E-3
-
-ellipses.posterior <- siberMVN(QPASIBER, parms, priors)
-
-mu.post <- extractPosteriorMeans(QPASIBER, ellipses.posterior)
-
-
-
-############## Calculado por mes separadamente #####
-
-# FEBRUARY 
-
-QPASIBERFEB.frm=read.csv("QPASIBERResourcesFEB.csv")
-attach(QPASIBERFEB.frm)
-QPASIBERFEB.frm
-
-shapiro.test(iso1)
-shapiro.test(iso2)
-
-QPASIBERFEB <- createSiberObject(QPASIBERFEB.frm)
-
-plotSiberObject(QPASIBERFEB,
-                  ax.pad = 2, 
-                  hulls = F, community.hulls.args, 
-                  ellipses = T, group.ellipses.args,
-                  group.hulls = T, group.hull.args,
-                  bty = "L",
-                  iso.order = c(1,2),
-                  xlab = expression({delta}^13*C~'\u2030'),
-                  ylab = expression({delta}^15*N~'\u2030')
-                  )
-
-laymanMetrics(iso1,iso2)
-
-# NOVEMBER
-
-QPASIBERNOV.frm=read.csv("QPASIBERResourcesNOV.csv")
-attach(QPASIBERNOV.frm)
-QPASIBERNOV.frm
-
-shapiro.test(iso1)
-shapiro.test(iso2)
-
-QPASIBERNOV <- createSiberObject(QPASIBERNOV.frm)
-
-plotSiberObject(QPASIBERNOV,
-                  ax.pad = 2, 
-                  hulls = F, community.hulls.args, 
-                  ellipses = T, group.ellipses.args,
-                  group.hulls = T, group.hull.args,
-                  bty = "L",
-                  iso.order = c(1,2),
-                  xlab = expression({delta}^13*C~'\u2030'),
-                  ylab = expression({delta}^15*N~'\u2030')
-                  )
-
-laymanMetrics(iso1,iso2)
-
-# JUNE
-
-QPASIBERJUNE.frm=read.csv("QPASIBERResourcesJUNE.csv")
-attach(QPASIBERJUNE.frm)
-QPASIBERJUNE.frm
-
-shapiro.test(iso1)
-shapiro.test(iso2)
-
-QPASIBERJUNE <- createSiberObject(QPASIBERJUNE.frm)
-
-plotSiberObject(QPASIBERJUNE,
-                  ax.pad = 2, 
-                  hulls = F, community.hulls.args, 
-                  ellipses = T, group.ellipses.args,
-                  group.hulls = T, group.hull.args,
-                  bty = "L",
-                  iso.order = c(1,2),
-                  xlab = expression({delta}^13*C~'\u2030'),
-                  ylab = expression({delta}^15*N~'\u2030')
-                  )
-
-laymanMetrics(iso1,iso2)
-
-
-
-
 
 
 
