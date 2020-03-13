@@ -24,7 +24,7 @@ QPAFeb17Biplot = simmr_load(mixtures = as.matrix(targets[, 1:2]),
                             correction_sds = TEFs[,4:5],
                             group = as.factor(paste('Group', targets$Code)))
 QPAFeb17Biplot
-plot(QPAFeb17Biplot, group = 1:12)
+plot(QPAFeb17Biplot, group = 1:10)
 
 QPAFeb17_out = simmr_mcmc(QPAFeb17Biplot)
 summary(QPAFeb17_out,type='statistic', group = c(1:10))
@@ -34,7 +34,6 @@ summary(QPAFeb17_out,type='quantiles', group = c(1:10))
 
 
 # QPA November 2017 -------------------------------------------------------
-
 
 targets = read_excel("QPANov17.xlsx",1)
 sources = read_excel("QPANov17.xlsx",2)
@@ -74,8 +73,8 @@ QPAJune18Biplot
 plot(QPAJune18Biplot, group = 1:13)
 
 QPAJune18_out = simmr_mcmc(QPAJune18Biplot)
-summary(QPAJune18_out,type='statistic', group = c(1:11))
-summary(QPAJune18_out,type='quantiles', group = c(1:11))
+summary(QPAJune18_out,type='statistic', group = c(1:13))
+summary(QPAJune18_out,type='quantiles', group = c(1:13))
 
 
 
