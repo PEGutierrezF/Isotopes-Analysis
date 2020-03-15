@@ -3,35 +3,46 @@ install.packages("ggpubr")
 
 library("vegan")
 require(vegan)
+library(tidyverse)
 
 setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis/PERMANOVA QPA")
 
 
-######################### 13 C QPA ##############################
 
-CarbonQPA=read.csv("13CQPA.csv")
+# QPA 13 Carbon --------------------------------------------------------------
+
+
+QPAPermanova=read.csv("PermanovaQPA.csv")
+QPAPermanova
+
+CarbonQPA <- select(QPAPermanova, QPACarbon)
 CarbonQPA
 
-FactorsQPA=read.csv("FactorsQPA.csv")
-FactorsQPA
+Factors <- select(QPAPermanova, Source, Time)
+Factors
 
 CarbonQPA1 <- vegdist (CarbonQPA, method = "euclidean", na.rm = T)
 CarbonQPA1
 
-adonis2(CarbonQPA1 ~Source*Time, data = FactorsQPA)
+adonis2(CarbonQPA1 ~Source*Time, data = Factors)
 
-######################### 15 N QPA ##############################
 
-NitrogenQPA=read.csv("15NQPA.csv")
-NitrogenQPA
 
-FactorsQPA=read.csv("FactorsQPA.csv")
-FactorsQPA
+# QPA 15 Nitrogen ---------------------------------------------------------
 
-NitrogenQPA1<- vegdist (NitrogenQPA, method = "euclidean", na.rm = T)
+QPANitrogen <- select(QPAPermanova, QPANitrogen)
+QPANitrogen
+
+Factors <- select(QPAPermanova, Source, Time)
+Factors
+
+NitrogenQPA1<- vegdist (QPANitrogen, method = "euclidean", na.rm = T)
 NitrogenQPA1
 
-adonis2(NitrogenQPA1~Source*Time, data = FactorsQPA)
+adonis2(NitrogenQPA1~Source*Time, data = Factors)
+
+
+
 
 ################################################################
 
