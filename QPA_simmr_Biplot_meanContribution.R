@@ -24,13 +24,15 @@ QPAFeb17Biplot = simmr_load(mixtures = as.matrix(targets[, 1:2]),
                             correction_sds = TEFs[,4:5],
                             group = as.factor(paste('Group', targets$Code)))
 QPAFeb17Biplot
-plot(QPAFeb17Biplot, group = 1:10)
+plot(QPAFeb17Biplot, group = 1:12)
+
+
 
 QPAFeb17_out = simmr_mcmc(QPAFeb17Biplot)
-summary(QPAFeb17_out,type='statistic', group = c(1:10))
+summary(QPAFeb17_out,type='statistic', group = c(1:12))
 summary(QPAFeb17_out,type='quantiles', group = c(1:10))
 
-
+compare_sources(QPAFeb17_out,source_names=c('LeafLitter','Biofilm'))
 
 
 # QPA November 2017 -------------------------------------------------------
@@ -47,13 +49,13 @@ QPANOV17Biplot = simmr_load(mixtures = as.matrix(targets[, 1:2]),
                             correction_sds = TEFs[,4:5],
                             group = as.factor(paste('Group', targets$Code)))
 QPANOV17Biplot
-plot(QPANOV17Biplot, group = 1:11)
+plot(QPANOV17Biplot, group = 1:13)
 
 QPANOV17_out = simmr_mcmc(QPANOV17Biplot)
-summary(QPANOV17_out,type='statistic', group = c(1:11))
+summary(QPANOV17_out,type='statistic', group = c(1:13))
 summary(QPANOV17_out,type='quantiles', group = c(1:11))
 
-
+compare_sources(QPANOV17_out,source_names=c('LeafLitter','Biofilm'))
 
 # QPA June 2018 -----------------------------------------------------------
 
@@ -70,12 +72,13 @@ QPAJune18Biplot = simmr_load(mixtures = as.matrix(targets[, 1:2]),
                              correction_sds = TEFs[,4:5],
                              group = as.factor(paste('Group', targets$Code)))
 QPAJune18Biplot
-plot(QPAJune18Biplot, group = 1:11)
+plot(QPAJune18Biplot, group = 1:13)
 
 QPAJune18_out = simmr_mcmc(QPAJune18Biplot)
-summary(QPAJune18_out,type='statistic', group = c(1:11))
+summary(QPAJune18_out,type='statistic', group = c(1:13))
 summary(QPAJune18_out,type='quantiles', group = c(1:11))
 
+compare_sources(QPAJune18_out,source_names=c('LeafLitter','Biofilm'))
 
 
 # QPA February 2019 -------------------------------------------------------
@@ -99,5 +102,6 @@ QPAFeb19_out = simmr_mcmc(QPAFeb19Biplot)
 summary(QPAFeb19_out,type='statistic', group = c(1:13))
 summary(QPAFeb19_out,type='quantiles', group = c(1:13))
 
-
-
+compare_sources(QPAFeb19_out,source_names=c('LeafLitter','Biofilm'))
+summary(QPAFeb19_out,type='statistics')
+summary(QPAFeb19_out,type='quantiles')
