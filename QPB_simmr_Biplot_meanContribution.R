@@ -9,7 +9,6 @@ library("backports")
 setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis/SIMMR QPB")
 
 
-
 # QPB February 2017  ------------------------------------------------------
 
 targets = read_excel("QPBFeb17.xlsx",1)
@@ -25,12 +24,11 @@ QPBFeb17Biplot = simmr_load(mixtures = as.matrix(targets[, 1:2]),
                             correction_sds = TEFs[,4:5],
                             group = as.factor(paste('Group', targets$Code)))
 QPBFeb17Biplot
-plot(QPBFeb17Biplot, group = 1:10)
+plot(QPBFeb17Biplot, group = 1:12)
 
 QPBFeb17_out = simmr_mcmc(QPBFeb17Biplot)
-summary(QPBFeb17_out,type='statistic', group = c(1:10))
-summary(QPBFeb17_out,type='quantiles', group = c(1:10))
-
+summary(QPBFeb17_out,type='statistic', group = c(1:12))
+summary(QPBFeb17_out,type='quantiles', group = c(1:12))
 
 
 
@@ -49,10 +47,10 @@ QPBNOV17Biplot = simmr_load(mixtures = as.matrix(targets[, 1:2]),
                             correction_sds = TEFs[,4:5],
                             group = as.factor(paste('Group', targets$Code)))
 QPBNOV17Biplot
-plot(QPBNOV17Biplot, group = 1:11)
+plot(QPBNOV17Biplot, group = 1:13)
 
 QPBNOV17_out = simmr_mcmc(QPBNOV17Biplot)
-summary(QPBNOV17_out,type='statistic', group = c(1:11))
+summary(QPBNOV17_out,type='statistic', group = c(1:13))
 summary(QPBNOV17_out,type='quantiles', group = c(1:11))
 
 
@@ -74,10 +72,10 @@ QPBJune18Biplot = simmr_load(mixtures = as.matrix(targets[, 1:2]),
                              correction_sds = TEFs[,4:5],
                              group = as.factor(paste('Group', targets$Code)))
 QPBJune18Biplot
-plot(QPBJune18Biplot, group = 1:11)
+plot(QPBJune18Biplot, group = 1:13)
 
 QPBJune18_out = simmr_mcmc(QPBJune18Biplot)
-summary(QPBJune18_out,type='statistic', group = c(1:11))
+summary(QPBJune18_out,type='statistic', group = c(1:13))
 summary(QPBJune18_out,type='quantiles', group = c(1:11))
 
 
