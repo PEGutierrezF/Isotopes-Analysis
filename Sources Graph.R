@@ -5,17 +5,16 @@ library(tidyverse)
 library(ggpubr)
 library(gridExtra)
 
+setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis")
 
-setwd("D:/LTER/13 Stable Isotopes/Statistical Analysis/Permanova")
-
-IsotopesQPA=read.csv("IsotopesB.csv")
-IsotopesQPA
+Isotopes=read.csv("SourcesGraph.csv")
+Isotopes
 
 
-QPACarbon <- select(IsotopesQPA, Month, Source ,QPACarbon)
+QPACarbon <- select(Isotopes, Month, Source ,QPACarbon)
 QPACarbon
 
-QPANitrogen <- select(IsotopesQPA, Month, Source ,QPANitrogen)
+QPANitrogen <- select(Isotopes, Month, Source ,QPANitrogen)
 QPANitrogen
 
 # QPA Carbon --------------------------------------------------------------
@@ -67,10 +66,10 @@ p15
 
 # QPB Subgroups -----------------------------------------------------------
 
-QPBCarbon <- select(IsotopesQPA, Month, Source ,QPBCarbon)
+QPBCarbon <- select(Isotopes, Month, Source ,QPBCarbon)
 QPBCarbon
 
-QPBNitrogen <- select(IsotopesQPA, Month, Source ,QPBNitrogen)
+QPBNitrogen <- select(Isotopes, Month, Source ,QPBNitrogen)
 QPBNitrogen
 
 
