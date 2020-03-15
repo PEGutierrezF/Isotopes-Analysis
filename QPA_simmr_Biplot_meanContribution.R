@@ -47,7 +47,7 @@ QPANOV17Biplot = simmr_load(mixtures = as.matrix(targets[, 1:2]),
                             correction_sds = TEFs[,4:5],
                             group = as.factor(paste('Group', targets$Code)))
 QPANOV17Biplot
-plot(QPANOV17Biplot, group = 1:13)
+plot(QPANOV17Biplot, group = 1:11)
 
 QPANOV17_out = simmr_mcmc(QPANOV17Biplot)
 summary(QPANOV17_out,type='statistic', group = c(1:11))
@@ -70,11 +70,11 @@ QPAJune18Biplot = simmr_load(mixtures = as.matrix(targets[, 1:2]),
                              correction_sds = TEFs[,4:5],
                              group = as.factor(paste('Group', targets$Code)))
 QPAJune18Biplot
-plot(QPAJune18Biplot, group = 1:13)
+plot(QPAJune18Biplot, group = 1:11)
 
 QPAJune18_out = simmr_mcmc(QPAJune18Biplot)
-summary(QPAJune18_out,type='statistic', group = c(1:13))
-summary(QPAJune18_out,type='quantiles', group = c(1:13))
+summary(QPAJune18_out,type='statistic', group = c(1:11))
+summary(QPAJune18_out,type='quantiles', group = c(1:11))
 
 
 
@@ -93,11 +93,11 @@ QPAFeb19Biplot = simmr_load(mixtures = as.matrix(targets[, 1:2]),
                             correction_sds = TEFs[,4:5],
                             group = as.factor(paste('Group', targets$Code)))
 QPAFeb19Biplot
-plot(QPAFeb19Biplot, group = 1:11)
+plot(QPAFeb19Biplot, group = 1:13)
 
 QPAFeb19_out = simmr_mcmc(QPAFeb19Biplot)
-summary(QPAFeb19_out,type='statistic', group = c(1:11))
-summary(QPAFeb19_out,type='quantiles', group = c(1:11))
+summary(QPAFeb19_out,type='statistic', group = c(1:13))
+summary(QPAFeb19_out,type='quantiles', group = c(1:13))
 
 
 
