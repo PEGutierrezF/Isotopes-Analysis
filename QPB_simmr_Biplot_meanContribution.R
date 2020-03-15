@@ -2,13 +2,11 @@
 ##### https://cran.r-project.org/web/packages/simmr/vignettes/simmr.html
 
 
-install.packages("readxl")
-install.packages("backports")
 library("simmr")
 library("readxl")
 library("backports")
 
-setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis")
+setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis/SIMMR QPB")
 
 ##### QPB February 2017 #####
 
@@ -76,4 +74,22 @@ summary(QPBJune18_out,type='statistic', group = c(1:11))
 summary(QPBJune18_out,type='quantiles', group = c(1:11))
 
 
+##### QPB February 2019 #####
 
+targets = read_excel("QPBFeb19.xlsx",1)
+sources = read_excel("QPBFeb19.xlsx",2)
+TEFs <- read_excel("QPBFeb19.xlsx",3)
+
+QPBFeb19Biplot = simmr_load(mixtures = as.matrix(targets[, 1:2]),
+                            source_names = sources$Sources,
+                            source_means = sources[,2:3],
+                            source_sds = sources[,4:5],
+                            correction_means = TEFs[,2:3],
+                            correction_sds = TEFs[,4:5],
+                            group = as.factor(paste('Group', targets$Code)))
+QPBFeb19Biplot
+plot(QPBFeb19Biplot, group = 1:11)
+
+QPBFeb19_out = simmr_mcmc(QPBFeb19Biplot)
+summary(QPBFeb19_out,type='statistic', group = c(1:11))
+summary(QPBFeb19_out,type='quantiles', group = c(1:11))
