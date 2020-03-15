@@ -25,7 +25,8 @@ month
 p <- ggplot(data = QPACarbon, aes(y = QPACarbon , x = month, fill = Source)) + geom_boxplot()+
               scale_fill_manual(values=c("#00BF5F", "#C68550"))
 p
-p2 <- p + labs(x="", y = expression(delta^{13}*"C"))
+p2 <- p + labs(x="", y = expression(delta^{13}*"C (???)")) +
+                      coord_cartesian(ylim=c(-35, -25))
 p2
 p3 <- p2 + theme(axis.title.x = element_text(color = "black", size = 14, face = "bold"),
                  axis.title.y = element_text(color = "black", size = 16, face = "bold"))
@@ -33,7 +34,7 @@ p3
 
 p4 <- p3 + theme(axis.text.x=element_blank()) #subaxis x
 p4
-p5 <- p4 + theme(axis.text.y=element_text(angle=0, size=10, vjust=0.5, color="black")) # #subaxis y
+p5 <- p4 + theme(axis.text.y=element_text(angle=0, size=10, color="black")) # #subaxis y
 p5
 p6 <- p5 +theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
                 panel.background = element_blank(), axis.line = element_line(size = 0.75,colour = "black"))
@@ -49,15 +50,15 @@ month
 p10 <- ggplot(data = QPANitrogen, aes(y = QPANitrogen , x = month, fill = Source)) + geom_boxplot()+
                         scale_fill_manual(values=c("#00BF5F", "#C68550"))
 p10
-p11 <- p10 + labs(x="", y = expression(delta^{15}*"N"))
+p11 <- p10 + labs(x="", y = expression(delta^{15}*"N (???)"))
 p11
 p12 <- p11 + theme(axis.title.x = element_text(color = "black", size = 14, face = "bold"),
                  axis.title.y = element_text(color = "black", size = 16, face = "bold"))
 p12
 
-p13 <- p12 + theme(axis.text.x=element_text(angle=0, size=10, vjust=0.5,hjust=1, color="black")) #subaxis x
+p13 <- p12 + theme(axis.text.x=element_text(angle=0, size=10, color="black")) #subaxis x
 p13
-p14 <- p13 + theme(axis.text.y=element_text(angle=0, size=10, vjust=0.5, color="black")) # #subaxis y
+p14 <- p13 + theme(axis.text.y=element_text(angle=0, size=10, color="black")) # #subaxis y
 p14
 p15 <- p14+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
                 panel.background = element_blank(), axis.line = element_line(size = 0.75,colour = "black"))
@@ -81,7 +82,8 @@ month
 p20 <- ggplot(data = QPBCarbon, aes(y = QPBCarbon, x = Month, fill = Source)) + geom_boxplot()+
                     scale_fill_manual(values=c("#00BF5F", "#C68550"))
 p20
-p21 <- p20 + labs(x="", y = "")
+p21 <- p20 + labs(x="", y = "")+
+               coord_cartesian(ylim=c(-35, -25))
 p21
 p22 <- p21 + theme(axis.title.x = element_blank(),
                    axis.title.y = element_text(color = "black", size = 12, face = "bold"))
@@ -89,7 +91,7 @@ p22
 
 p23 <- p22 + theme(axis.text.x=element_blank()) #subaxis x
 p23
-p24 <- p23 + theme(axis.text.y=element_text(angle=0, size=10, vjust=0.5, color="black")) # #subaxis y
+p24 <- p23 + theme(axis.text.y=element_text(angle=0, size=10, color="black")) # #subaxis y
 p24
 p25 <- p24+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
                  panel.background = element_blank(), axis.line = element_line(size = 0.75,colour = "black"))
@@ -109,10 +111,9 @@ p31
 p32 <- p31 + theme(axis.title.x = element_text(color = "black", size = 12, face = "bold"),
                    axis.title.y = element_text(color = "black", size = 12, face = "bold"))
 p32
-
-p33 <- p32 + theme(axis.text.x=element_text(angle=0, size=10, vjust=0.5,hjust=1, color="black")) #subaxis x
+p33 <- p32 + theme(axis.text.x=element_text(angle=0, size=10,color="black")) #subaxis x
 p33
-p34 <- p33 + theme(axis.text.y=element_text(angle=0, size=10, vjust=0.5, color="black")) # #subaxis y
+p34 <- p33 + theme(axis.text.y=element_text(angle=0, size=10, color="black")) # #subaxis y
 p34
 p35 <- p34+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
                  panel.background = element_blank(), axis.line = element_line(size = 0.75,colour = "black"))
@@ -125,7 +126,7 @@ p25
 p15
 p35
 
-Figure2 <- ggarrange(p6, p25, p15, p35,  ncol=2, nrow=2, 
+Figure2 <- ggarrange(p6, p25, p15, p35,  ncol=2, nrow=2, align = "hv",
                      labels = c("A", "B","C","D"),font.label = list(size = 12, color = "black"),
                      common.legend = TRUE, legend="top")
 Figure2
