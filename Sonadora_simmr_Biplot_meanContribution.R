@@ -31,6 +31,6 @@ Sonadora_out = simmr_mcmc(SonadoraBiplot)
 summary(Sonadora_out,type='statistic', group = c(1:6))
 summary(Sonadora_out,type='quantiles', group = c(1:6))
 
-compare_sources(QPAFeb17_out,source_names=c('LeafLitter','Biofilm'))
+compare_sources(Sonadora_out,source_names=c('LeafLitter','Biofilm','algae'))
 
 
