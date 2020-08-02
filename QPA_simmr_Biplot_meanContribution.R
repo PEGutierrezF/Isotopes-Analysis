@@ -1,7 +1,7 @@
 
 #### https://cran.r-project.org/web/packages/simmr/vignettes/simmr.html
 
-
+install.packages("simmr")
 library("simmr")
 library("readxl")
 library("backports")
