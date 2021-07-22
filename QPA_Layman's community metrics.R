@@ -10,9 +10,9 @@ require("rjags")
 
 library("SIBER")
 
-setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis/Layman's community metrics/SIBERQPA")
+# setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis/Layman's community metrics/SIBERQPA")
 
-QPASIBER <- read.csv("QPASIBER.csv", header=T)
+QPASIBER <- read.csv("Layman's community metrics/SIBERQPA/QPASIBER.csv", header=T)
 QPASIBER <- createSiberObject(QPASIBER)
 QPASIBER
 

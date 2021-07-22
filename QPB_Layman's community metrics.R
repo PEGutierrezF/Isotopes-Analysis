@@ -8,7 +8,7 @@ library("SIBER")
 
 setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis/Layman's community metrics/SIBERQPB")
 
-QPBSIBER <- read.csv("QPBSIBER.csv", header=T)
+QPBSIBER <- read.csv("Layman's community metrics/SIBERQPB/QPBSIBER.csv", header=T)
 QPBSIBER <- createSiberObject(QPBSIBER)
 QPBSIBER
 
