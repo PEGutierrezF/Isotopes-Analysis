@@ -6,7 +6,7 @@ require("rjags")
 
 library("SIBER")
 
-setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis/Layman's community metrics/SIBERQPB")
+#setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis/Layman's community metrics/SIBERQPB")
 
 QPBSIBER <- read.csv("Layman's community metrics/SIBERQPB/QPBSIBER.csv", header=T)
 QPBSIBER <- createSiberObject(QPBSIBER)
