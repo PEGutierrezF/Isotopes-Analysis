@@ -1,4 +1,21 @@
 
+
+
+
+# ---------------------------------------------
+# Layman's Community Wide Metrics to Quebrada Prieta B
+# 26 Aug 2021
+# Pablo E. Gutiérrez-Fonseca
+# pabloe.gutierrezfonseca@gmail.com
+# ---------------------------------------------
+#  
+
+
+
+
+
+
+
 install.packages("rjags")
 require("rjags")
 
@@ -11,6 +28,18 @@ library("SIBER")
 QPBSIBER <- read.csv("Layman's community metrics/SIBERQPB/QPBSIBER.csv", header=T)
 QPBSIBER <- createSiberObject(QPBSIBER)
 QPBSIBER
+
+
+
+##########################
+##### For community ######
+##########################
+
+
+community.ML <- communityMetricsML(QPBSIBER) 
+print(community.ML)
+
+
 
 
 ##### Groups #####
@@ -63,13 +92,6 @@ plotSiberObject(QPBSIBER,
 plotGroupEllipses(QPBSIBER, n = 100, p.interval = 0.95,
                   ci.mean = T, lty = 1, lwd = 2) 
 
-##########################
-##### For community ######
-##########################
-
-
-community.ML <- communityMetricsML(QPBSIBER) 
-print(community.ML)
 
 
 

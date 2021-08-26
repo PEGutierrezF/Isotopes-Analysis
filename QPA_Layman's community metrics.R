@@ -1,4 +1,15 @@
 
+
+
+
+# ---------------------------------------------
+# Layman's Community Wide Metrics to Quebrada Prieta A
+# 26 Aug 2021
+# Pablo E. Gutiérrez-Fonseca
+# pabloe.gutierrezfonseca@gmail.com
+# ---------------------------------------------
+# 
+
 ### Usar solo el comando de community.ML <- communityMetricsML() que esta abajo
 ### Ya esta la matrix de QPA esta arreglada con el orden de FFG que hice para SIMMR.  Pero falta QPB.
 ### Arreglar los valores que son diferentes
@@ -15,6 +26,17 @@ library("SIBER")
 QPASIBER <- read.csv("Layman's community metrics/SIBERQPA/QPASIBER.csv", header=T)
 QPASIBER <- createSiberObject(QPASIBER)
 QPASIBER
+
+
+##########################
+##### For community ######
+##########################
+
+
+community.ML <- communityMetricsML(QPASIBER) 
+print(community.ML)
+
+
 
 ##### Groups #####
 
@@ -66,14 +88,6 @@ plotSiberObject(QPASIBER,
 
 plotGroupEllipses(QPASIBER, n = 100, p.interval = 0.95,
                   ci.mean = T, lty = 1, lwd = 2) 
-
-##########################
-##### For community ######
-##########################
-
-
-community.ML <- communityMetricsML(QPASIBER) 
-print(community.ML)
 
 
 
