@@ -20,6 +20,7 @@ install.packages("rjags")
 require("rjags")
 
 library("SIBER")
+citation('SIBER')
 
 # setwd("D:/LTER/Manuscript 2019 Stable Isotopes/Isotopes-Analysis/Layman's community metrics/SIBERQPA")
 
